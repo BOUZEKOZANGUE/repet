@@ -1,3 +1,9 @@
+
+const TYPES = {
+    event:"event",
+    todo:"todo"
+}
+
 //class patern
 class Task{
     constructor(name){
@@ -31,15 +37,17 @@ class EvenTask extends Task{
         }
     }
 }
-
 class TodoTask extends Task{
     constructor(name){
         super(name)
         this.priorities = ["normal" , "high"]
         this.priority = 0;
     }
+    priorites(){
+        this.priority = !this.priority
+    }
     toString(){
-        if (this.priority) {
+        if (!this.priority) {
             console.log("la tache est normal : " + this.name); 
         }
         else{
@@ -47,16 +55,39 @@ class TodoTask extends Task{
         }
     }
 }
+class TaskFactory{
+    createTask(type,name){
+        switch (type) {
+            case TYPES.event:
+                return new EvenTask(name);
+            case TYPES.todo:
+                return new TodoTask(name);
+        }
 
-let task1  = new Task("learn javascript patern");
+    }
+}
+
+let task1  = new Task("learn javascript pattern");
 let task2 = new Task("all you want in js with de class in js patern")
 let ev = new EvenTask()
-let tachp = new TodoTask("high")
+let todo = new TodoTask("la tache a ete effectue ac succes")
 
 // task1.toString()
 // task2.toString()
 task1.complete()
 task1.toString()
 ev.toString()
-tachp.toString()
+todo.priorites()
+todo.toString()
 
+// utilisation du Factory
+let factory = new TaskFactory()
+console.log("==============Factory==========");
+
+let ev1 = factory.createTask(TYPES.event, "learn js pattern")
+let new_task = factory.createTask(TYPES.todo, "the event skedule")
+
+
+ev1.toString()
+new_task.priorites()
+new_task.toString()
