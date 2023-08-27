@@ -1,16 +1,21 @@
 let TaskRepository = require("./src/TaskRepository");
 let Task = require("./src/Task");
 
+let taskrepository = new TaskRepository();
+
 let task1 = new Task("learn javascript pattern");
 let task2 = new Task("all you want in js with de class in js patern");
 
-let repository = new TaskRepository();
 
-repository.add(task1);
-repository.add(task2);
-repository.getAll();
-repository.remove(task1);
-repository.getAll();
+
+taskrepository.add(task1);
+console.log(taskrepository.getAll());
+taskrepository.add(task2);
+console.log(taskrepository.getAll());
+taskrepository.remove(task2);
+console.log(taskrepository.getAll());
+
+
 
 // ev.toString()
 // todo.priorites()
