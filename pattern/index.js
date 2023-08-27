@@ -87,7 +87,6 @@ console.log("==============Factory==========");
 let ev1 = factory.createTask(TYPES.event, "learn js pattern")
 let new_task = factory.createTask(TYPES.todo, "the event skedule")
 
-
 ev1.toString()
 new_task.priorites()
 new_task.toString()
